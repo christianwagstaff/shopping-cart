@@ -4,17 +4,18 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: aliceblue;
+    background-color: var(--secondary-color);
+    color: white;
+    border: 4px solid black;
 }
 
 .nav-links {
     display: flex;
     gap: 12px;
-    color: black
 }
 
 a {
-    color: black;
+    color: white;
 }
 
 li {
