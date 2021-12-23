@@ -10,7 +10,7 @@ import Cart from "./components/Cart";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/shopping-cart">
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
