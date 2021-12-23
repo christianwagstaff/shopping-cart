@@ -12,6 +12,9 @@ const NavBar = () => {
         <NavLink to="/shop">
           <li>Shop</li>
         </NavLink>
+        <NavLink to="/cart">
+          <li>Cart</li>
+        </NavLink>
       </ul>
     </nav>
   );

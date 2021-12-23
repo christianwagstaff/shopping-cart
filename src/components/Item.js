@@ -19,6 +19,29 @@ function Item() {
     setAmount(amount - 1);
   }
 
+  function addToCart() {
+    // don't add if amount is 0
+    if (amount === 0) return;
+    let storage = localStorage.getItem("cart");
+    let cart = JSON.parse(storage);
+    let newItem = { id: id, quantity: amount };
+    if (cart) {
+      if (cart.filter((e) => e.id === id).length > 0) {
+        let index = cart.findIndex((e) => e.id === id);
+        cart = replaceAt(cart, index, newItem);
+      } else {
+        cart.push(newItem);
+      }
+      cart = JSON.stringify(cart);
+      localStorage.setItem("cart", cart);
+
+    } else {
+      let newCart = [newItem];
+      let newCartString = JSON.stringify(newCart);
+      localStorage.setItem("cart", newCartString);
+    }
+  }
+
   return (
     <div className="item">
       <div className="top">
@@ -46,7 +69,9 @@ function Item() {
               +
             </button>
           </div>
-          <button className="addToCart">Add</button>
+          <button className="addToCart" onClick={addToCart}>
+            Add
+          </button>
         </div>
       </div>
     </div>
@@ -54,3 +79,9 @@ function Item() {
 }
 
 export default Item;
+
+function replaceAt(array, index, value) {
+  const ret = array.slice(0);
+  ret[index] = value;
+  return ret;
+}
