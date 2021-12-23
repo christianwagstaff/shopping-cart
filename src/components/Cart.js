@@ -4,7 +4,7 @@ import "../styles/cart.css";
 import { useState } from "react";
 
 const Cart = () => {
-  const [cart, setCart] = useLocalStorage("cart", "");
+  const [cart, setCart] = useLocalStorage("cart", []);
   return (
     <div className="cart shop">
       <h1>Cart</h1>
@@ -19,6 +19,7 @@ const Cart = () => {
         );
       })}
       <CartTotal cart={cart} />
+      <Checkout />
     </div>
   );
 };
@@ -114,7 +115,7 @@ const CartItem = (props) => {
 const CartTotal = (cart) => {
   const total = getTotal();
   return (
-    <div className="total">
+    <div className="checkout-pricing">
       <div className="horizontal subtotal">
         <h3>Subtotal:</h3>
         <div className="price-amount">{total}</div>
@@ -182,3 +183,7 @@ function getTotal() {
   }
   return total;
 }
+
+const Checkout = () => {
+  return <button className="checkout">Proceed to Payment</button>;
+};

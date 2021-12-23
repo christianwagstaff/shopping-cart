@@ -9,6 +9,7 @@
     padding: var(--gap);
     gap: var(--gap);
     padding-bottom: 0;
+    font-family: "Rubik", sans-serif;
 }
 
 .image-container {
@@ -42,15 +43,16 @@
 }
 
 .purchase {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    justify-content: space-between;
     gap: var(--gap);
     border: 1px solid var(--primary-color);
-    padding: var(--gap) calc(var(--gap)*2);
+    padding: calc(var(--gap) * 2) calc(var(--gap) * 2);
     border-radius: 100px;
     width: 80vw;
     background-color: var(--terciary-color);
+    font-size: large;
 }
 
 .quantity {
@@ -65,6 +67,8 @@
 button {
     border: none;
     background-color: inherit;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 .addToCart:active {
