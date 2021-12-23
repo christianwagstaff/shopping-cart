@@ -15,6 +15,7 @@
 }
 
 .shop-section {
+    color: black;
     height: 100%;
     width: 100%;
     display: flex;
@@ -82,4 +83,9 @@
 
 .price-amount::before {
     content: "$ ";
+}
+
+.shop-link {
+    color: black;
+    text-decoration: none;
 }

@@ -1,6 +1,9 @@
-const Item = () => {
+import "../styles/item.css";
+
+const Item = (props) => {
+  console.log(props);
   return (
-    <div>
+    <div className="item">
       <h1>Item</h1>
     </div>
   );

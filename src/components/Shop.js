@@ -1,5 +1,6 @@
 import plantList from "./plantList";
 import "../styles/shop.css";
+import { Link } from "react-router-dom";
 
 // Shuffle The Lists on Load
 const succulentList = shuffleArray(
@@ -12,10 +13,9 @@ const expensive = shuffleArray(
   plantList.filter((plant) => plant.tags.includes("expensive"))
 );
 
-const allPlants = shuffleArray(plantList)
+const allPlants = shuffleArray(plantList);
 
 const Shop = () => {
-  console.log(plantList);
   return (
     <div className="shop">
       <h1>Shop</h1>
@@ -39,6 +39,7 @@ const ShopSection = (props) => {
               name={item.name}
               img={item.img}
               price={item.price}
+              id={item.id}
             />
           );
         })}
@@ -49,16 +50,18 @@ const ShopSection = (props) => {
 
 const ShopItem = (props) => {
   return (
-    <div className="shop-item">
-      <div className="shop-item-img">
-        <img src={props.img} alt={props.name} />
+    <Link to={`${props.id}`} className="shop-link">
+      <div className="shop-item">
+        <div className="shop-item-img">
+          <img src={props.img} alt={props.name} />
+        </div>
+        <h3>{props.name}</h3>
+        <div className="shop-item-price">
+          <div>Price: </div>
+          <div className="price-amount">{props.price}</div>
+        </div>
       </div>
-      <h3>{props.name}</h3>
-      <div className="shop-item-price">
-        <div>Price: </div>
-        <div className="price-amount">{props.price}</div>
-      </div>
-    </div>
+    </Link>
   );
 };
 

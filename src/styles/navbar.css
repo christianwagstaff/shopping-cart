@@ -6,17 +6,22 @@ nav {
     justify-content: space-around;
     background-color: var(--secondary-color);
     color: white;
-    border: 4px solid black;
     font-family: "Rubik", sans-serif;
+    font-size: large;
 }
 
 .nav-links {
+    height: 100%;
     display: flex;
-    gap: 12px;
+    align-items: center;
 }
 
 a {
     color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: var(--gap)
 }
 
 li {
@@ -25,4 +30,9 @@ li {
 
 nav .logo {
     font-size: calc(3rem + 5vw);
+}
+
+.active {
+    background-color: var(--terciary-color);
+    height: 100%;
 }
