@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/shopping-cart/static/css/main.ca251544.css",
-    "main.js": "/shopping-cart/static/js/main.9ee79519.js",
+    "main.js": "/shopping-cart/static/js/main.ad112c7c.js",
     "static/media/bonsai-g1e1afd442_1280.png": "/shopping-cart/static/media/bonsai-g1e1afd442_1280.64fb4d51b1b2f926f70a.png",
     "static/media/orchids-gb868ee7f2_1920.png": "/shopping-cart/static/media/orchids-gb868ee7f2_1920.e8f06876512970168a1d.png",
     "static/media/bonsai-gbfd49cb18_1280.png": "/shopping-cart/static/media/bonsai-gbfd49cb18_1280.fd3ca1f7cc9739133902.png",
@@ -24,10 +24,10 @@
     "static/media/close.svg": "/shopping-cart/static/media/close.244b66874c46718f7e0607d3acebaccf.svg",
     "static/media/back-arrow.svg": "/shopping-cart/static/media/back-arrow.ceecbfa5efdd8fe4e763afa75999f094.svg",
     "main.ca251544.css.map": "/shopping-cart/static/css/main.ca251544.css.map",
-    "main.9ee79519.js.map": "/shopping-cart/static/js/main.9ee79519.js.map"
+    "main.ad112c7c.js.map": "/shopping-cart/static/js/main.ad112c7c.js.map"
   },
   "entrypoints": [
     "static/css/main.ca251544.css",
-    "static/js/main.9ee79519.js"
+    "static/js/main.ad112c7c.js"
   ]
 }
