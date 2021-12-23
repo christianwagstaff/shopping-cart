@@ -26,6 +26,7 @@
 .start-shopping {
     padding: 12px 24px;
     border-radius: 100px;
+    border: 1px solid var(--primary-color);
 }
 
 .top, .bottom {
@@ -34,4 +35,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+a {
+    text-decoration: none;
 }

@@ -1,5 +1,5 @@
 nav {
-    height: calc(100px + 5vw);
+    height: 80px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -29,7 +29,7 @@ li {
 }
 
 nav .logo {
-    font-size: calc(3rem + 5vw);
+    font-size: calc(3rem);
 }
 
 .active {

@@ -50,7 +50,7 @@ const ShopSection = (props) => {
 
 const ShopItem = (props) => {
   return (
-    <Link to={`${props.id}`} className="shop-link">
+    <Link to={`/shop/${props.id}`} className="shop-link">
       <div className="shop-item">
         <div className="shop-item-img">
           <img src={props.img} alt={props.name} />

@@ -3,7 +3,7 @@
     --secondary-color: #1e5128;
     --terciary-color: #4e9f3d;
     --complementary-color: #d8e9a8;
-    --gap: 12px;
+    --gap: 6px;
 }
 @font-face {
     font-family: "Rubik";
@@ -16,4 +16,10 @@
 @font-face {
     font-family: "Ole";
     src: local('Ole'), url(../fonts/Ole-Regular.ttf) format("truetype");
+}
+
+@media screen and (min-width: 600px) {
+    :root {
+        --gap: 12px;
+    }
 }
