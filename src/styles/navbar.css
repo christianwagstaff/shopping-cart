@@ -1,5 +1,5 @@
 nav {
-    height: 100px;
+    height: calc(100px + 5vw);
     width: 100%;
     display: flex;
     align-items: center;
@@ -20,4 +20,8 @@ a {
 
 li {
     list-style: none;
+}
+
+nav .logo {
+    font-size: calc(3rem + 5vw);
 }

@@ -4,9 +4,9 @@ import "../styles/navbar.css"
 const NavBar = () => {
   return (
     <nav>
-      <h3>Planty</h3>
+      <h3 className="logo">Planty</h3>
       <ul className="nav-links">
-        <Link to="/home">
+        <Link to="/">
           <li>Home</li>
         </Link>
         <Link to="/shop">

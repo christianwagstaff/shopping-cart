@@ -1,6 +1,7 @@
 :root {
-    --primary-color: #191a19;
+    --primary-color: #0e3a0e;
     --secondary-color: #1e5128;
     --terciary-color: #4e9f3d;
     --complementary-color: #d8e9a8;
+    --gap: 12px;
 }
