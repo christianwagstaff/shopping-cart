@@ -1,14 +1,26 @@
 import plantList from "./plantList";
 import "../styles/shop.css";
 
+// Shuffle The Lists on Load
+const succulentList = shuffleArray(
+  plantList.filter((plant) => plant.tags.includes("succulent"))
+);
+const flowering = shuffleArray(
+  plantList.filter((plant) => plant.tags.includes("flowering"))
+);
+const expensive = shuffleArray(
+  plantList.filter((plant) => plant.tags.includes("expensive"))
+);
+
 const Shop = () => {
   console.log(plantList);
   return (
     <div className="shop">
       <h1>Shop</h1>
-      <ShopSection title="Popular" list={plantList}/>
-      <ShopSection title="Succulents" list={plantList}/>
-      <ShopSection title="Flowering Plants" list={plantList}/>
+      <ShopSection title="Popular" list={expensive} />
+      <ShopSection title="Succulents" list={succulentList} />
+      <ShopSection title="Flowering Plants" list={flowering} />
+      <ShopSection title="See All" list={plantList} />
     </div>
   );
 };
@@ -20,7 +32,12 @@ const ShopSection = (props) => {
       <div className="item-container">
         {props.list.map((item) => {
           return (
-            <ShopItem name={item.name} img={item.img} price={item.price} />
+            <ShopItem
+              key={item.id}
+              name={item.name}
+              img={item.img}
+              price={item.price}
+            />
           );
         })}
       </div>
@@ -44,3 +61,14 @@ const ShopItem = (props) => {
 };
 
 export default Shop;
+
+function shuffleArray(arr) {
+  // Fisher-Yates Shuffle Algorithm for Shuffling an Array
+  // We duplicate the array as to not mutate the original
+  const copy = arr.slice(0);
+  for (let i = copy.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
