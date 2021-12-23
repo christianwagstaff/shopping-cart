@@ -3,9 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import "../styles/item.css";
 import plantList from "./plantList";
 import { ReactComponent as BackArrow } from "../images/back-arrow.svg";
+import { ReactComponent as Checkmark } from "../images/check.svg";
 
 function Item() {
   const [amount, setAmount] = useState(0);
+  const [showConfirm, setShowConfirm] = useState(false);
   const { id } = useParams();
   const selected = plantList.filter((plant) => plant.id === parseInt(id))[0];
 
@@ -39,6 +41,10 @@ function Item() {
       let newCartString = JSON.stringify(newCart);
       localStorage.setItem("cart", newCartString);
     }
+    setShowConfirm(true);
+    setTimeout(() => {
+      setShowConfirm(false);
+    }, 1000);
   }
 
   return (
@@ -73,6 +79,7 @@ function Item() {
           </button>
         </div>
       </div>
+      {showConfirm ? <AddedToCartPopup /> : null}
     </div>
   );
 }
@@ -85,10 +92,12 @@ function replaceAt(array, index, value) {
   return ret;
 }
 
-const addedToCartPopup = () => {
+const AddedToCartPopup = () => {
   return (
-    <div className="popup">
-      <h2>Added to Cart!</h2>
+    <div className="popup-wrapper">
+      <div className="popup">
+        <Checkmark className="confirm" />
+      </div>
     </div>
   );
 };

@@ -86,3 +86,41 @@ button {
     border-radius: 50%;
     padding: 0;
 }
+
+.popup-wrapper {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    height: 100px;
+    width: 100px;
+    animation: zoom 1000ms ease-in-out forwards;
+}
+
+.confirm {
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes zoom {
+    0% {
+        opacity: 0;
+        scale: 1;
+    }
+    50% {
+        opacity: 1;
+        scale: 3;
+    }
+    100% {
+        opacity: 0;
+        scale: 1;
+    }
+}
