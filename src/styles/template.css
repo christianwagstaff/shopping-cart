@@ -5,3 +5,15 @@
     --complementary-color: #d8e9a8;
     --gap: 12px;
 }
+@font-face {
+    font-family: "Rubik";
+    src: local('Rubik'), url(../fonts/Rubik-VariableFont_wght.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Rubik Italic";
+    src: local('Rubik Italic'), url(../fonts/Rubik-Italic-VariableFont_wght.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Ole";
+    src: local('Ole'), url(../fonts/Ole-Regular.ttf) format("truetype");
+}

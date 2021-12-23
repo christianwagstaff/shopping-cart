@@ -72,7 +72,7 @@ const plantList = [
     tags: ["plant", "succulent"],
   },
   {
-    name: "Beaded Succulent",
+    name: "String of Pearls",
     price: 45,
     img: beaded,
     id: 10,

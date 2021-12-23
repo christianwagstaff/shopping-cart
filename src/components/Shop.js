@@ -12,6 +12,8 @@ const expensive = shuffleArray(
   plantList.filter((plant) => plant.tags.includes("expensive"))
 );
 
+const allPlants = shuffleArray(plantList)
+
 const Shop = () => {
   console.log(plantList);
   return (
@@ -20,7 +22,7 @@ const Shop = () => {
       <ShopSection title="Popular" list={expensive} />
       <ShopSection title="Succulents" list={succulentList} />
       <ShopSection title="Flowering Plants" list={flowering} />
-      <ShopSection title="See All" list={plantList} />
+      <ShopSection title="See All" list={allPlants} />
     </div>
   );
 };
