@@ -31,10 +31,10 @@ const ShopSection = (props) => {
 const ShopItem = (props) => {
   return (
     <div className="shop-item">
-      <h3>{props.name}</h3>
       <div className="shop-item-img">
         <img src={props.img} alt={props.name} />
       </div>
+      <h3>{props.name}</h3>
       <div className="shop-item-price">
         <div>Price: </div>
         <div className="price-amount">{props.price}</div>
