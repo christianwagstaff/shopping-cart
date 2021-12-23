@@ -9,7 +9,6 @@ const Cart = () => {
     <div className="cart shop">
       <h1>Cart</h1>
       {[...cart].map((item) => {
-        console.log(item);
         return (
           <CartItem
             setCart={setCart}
@@ -19,7 +18,7 @@ const Cart = () => {
           />
         );
       })}
-      <CartTotal />
+      <CartTotal cart={cart} />
     </div>
   );
 };
@@ -38,7 +37,6 @@ const CartItem = (props) => {
   function decreaseAmount(id) {
     let newAmount = props.amount - 1;
     if (newAmount === 0) {
-      console.log("is 0");
       deleteItem(id);
       return;
     }
@@ -113,15 +111,33 @@ const CartItem = (props) => {
   );
 };
 
-const CartTotal = () => {
-  return <div>Cart Total</div>;
+const CartTotal = (cart) => {
+  const total = getTotal();
+  return (
+    <div className="total">
+      <div className="horizontal subtotal">
+        <h3>Subtotal:</h3>
+        <div className="price-amount">{total}</div>
+      </div>
+      <div className="horizontal tax">
+        <h3>Tax: </h3>
+        <div className="price-amount">0</div>
+      </div>
+      <div className="horizontal total">
+        <h3>Total: </h3>
+        <div className="price-amount">{total}</div>
+      </div>
+    </div>
+  );
 };
+
 function replaceAt(array, index, value) {
   const ret = array.slice(0);
   ret[index] = value;
   return ret;
 }
 
+// function from usehooks.com
 function useLocalStorage(key, initialValue) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
@@ -154,4 +170,15 @@ function useLocalStorage(key, initialValue) {
     }
   };
   return [storedValue, setValue];
+}
+
+function getTotal() {
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  let total = 0;
+  for (let item of cart) {
+    let id = item.id;
+    let selected = plantList.filter((plant) => plant.id === parseInt(id))[0];
+    total += selected.price * item.quantity;
+  }
+  return total;
 }
