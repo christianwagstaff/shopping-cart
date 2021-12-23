@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/shopping-cart/static/css/main.ca251544.css",
+    "main.js": "/shopping-cart/static/js/main.9ee79519.js",
+    "static/media/bonsai-g1e1afd442_1280.png": "/shopping-cart/static/media/bonsai-g1e1afd442_1280.64fb4d51b1b2f926f70a.png",
+    "static/media/orchids-gb868ee7f2_1920.png": "/shopping-cart/static/media/orchids-gb868ee7f2_1920.e8f06876512970168a1d.png",
+    "static/media/bonsai-gbfd49cb18_1280.png": "/shopping-cart/static/media/bonsai-gbfd49cb18_1280.fd3ca1f7cc9739133902.png",
+    "static/media/houseplants-gdfe5c8158_1920.jpg": "/shopping-cart/static/media/houseplants-gdfe5c8158_1920.217a01c97d0325b8f7c1.jpg",
+    "static/media/succulent-g2c09a12c5_1920.jpg": "/shopping-cart/static/media/succulent-g2c09a12c5_1920.64c552f4000a5d7ea3d4.jpg",
+    "static/media/succulent-g2f76fc726_1920.jpg": "/shopping-cart/static/media/succulent-g2f76fc726_1920.4707769140eeceb17872.jpg",
+    "static/media/plant-pot-g608112271_1920.jpg": "/shopping-cart/static/media/plant-pot-g608112271_1920.c72324f4d34cf4813fa9.jpg",
+    "static/media/flower-gardens-ga6018fb5c_1920.jpg": "/shopping-cart/static/media/flower-gardens-ga6018fb5c_1920.8570deb0456e0bbbdf3a.jpg",
+    "static/media/vase-gae6b39599_1920.jpg": "/shopping-cart/static/media/vase-gae6b39599_1920.36220ea62fa0a55b11b1.jpg",
+    "static/media/rosario-g39a75f76e_1920.jpg": "/shopping-cart/static/media/rosario-g39a75f76e_1920.f5a50121ffc2828ee064.jpg",
+    "static/media/monstera-gbf46df0c1_1920.jpg": "/shopping-cart/static/media/monstera-gbf46df0c1_1920.ea9d41b948bc2236ad3e.jpg",
+    "static/media/leaf-g966ddc13f_1920.jpg": "/shopping-cart/static/media/leaf-g966ddc13f_1920.4c32c50536e51d33ac8c.jpg",
+    "static/media/flower-g3e4be6456_1920.jpg": "/shopping-cart/static/media/flower-g3e4be6456_1920.64516f2343cc8787ee37.jpg",
+    "static/media/snake-plant-g47dcb58b0_1920.jpg": "/shopping-cart/static/media/snake-plant-g47dcb58b0_1920.efc4630066f8c45533ca.jpg",
+    "static/media/Rubik-VariableFont_wght.ttf": "/shopping-cart/static/media/Rubik-VariableFont_wght.3a8e5377732eefcf42fb.ttf",
+    "static/media/Rubik-Italic-VariableFont_wght.ttf": "/shopping-cart/static/media/Rubik-Italic-VariableFont_wght.ede281d4a6388f7378fa.ttf",
+    "static/media/Ole-Regular.ttf": "/shopping-cart/static/media/Ole-Regular.b4aab839b708703d313c.ttf",
+    "index.html": "/shopping-cart/index.html",
+    "static/media/wave.svg": "/shopping-cart/static/media/wave.ebf3c2bf6fffd7e74d41.svg",
+    "static/media/close.svg": "/shopping-cart/static/media/close.244b66874c46718f7e0607d3acebaccf.svg",
+    "static/media/back-arrow.svg": "/shopping-cart/static/media/back-arrow.ceecbfa5efdd8fe4e763afa75999f094.svg",
+    "main.ca251544.css.map": "/shopping-cart/static/css/main.ca251544.css.map",
+    "main.9ee79519.js.map": "/shopping-cart/static/js/main.9ee79519.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca251544.css",
+    "static/js/main.9ee79519.js"
+  ]
+}
