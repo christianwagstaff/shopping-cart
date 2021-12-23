@@ -34,7 +34,6 @@ function Item() {
       }
       cart = JSON.stringify(cart);
       localStorage.setItem("cart", cart);
-
     } else {
       let newCart = [newItem];
       let newCartString = JSON.stringify(newCart);
@@ -85,3 +84,11 @@ function replaceAt(array, index, value) {
   ret[index] = value;
   return ret;
 }
+
+const addedToCartPopup = () => {
+  return (
+    <div className="popup">
+      <h2>Added to Cart!</h2>
+    </div>
+  );
+};
