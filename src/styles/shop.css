@@ -34,12 +34,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-wrap: 1;
     gap: var(--gap);
-    overflow-x: auto;
     padding: var(--gap);
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  
 }
 
 .item-container::-webkit-scrollbar {
@@ -51,11 +48,11 @@
     text-align: center;
     border-radius: 15px;
     height: 200px;
-    min-width: 150px;
+    width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: var(--gap);
     padding: var(--gap);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;}
@@ -88,4 +85,16 @@
 .shop-link {
     color: black;
     text-decoration: none;
+}
+
+@media screen and (min-width: 600px) {
+    .item-container {
+        flex-wrap: wrap;
+    }
+
+    .shop-item {
+        height: 300px;
+        width: 225px;
+        font-size: 1.25rem;
+    }
 }

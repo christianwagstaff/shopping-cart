@@ -50,7 +50,7 @@
     border: 1px solid var(--primary-color);
     padding: calc(var(--gap) * 2) calc(var(--gap) * 2);
     border-radius: 100px;
-    width: 80vw;
+    width: 80%;
     background-color: var(--terciary-color);
     font-size: large;
 }
@@ -126,5 +126,14 @@ button {
     100% {
         opacity: 0;
         scale: 1;
+    }
+}
+@media screen and (min-width: 600px) {
+    .item {
+        font-size: 1.5rem+1vw;
+        align-self: center;
+    }
+    .item-details {
+        width: 70%
     }
 }

@@ -8,16 +8,18 @@ const Cart = () => {
   return (
     <div className="cart shop">
       <h1>Cart</h1>
-      {[...cart].map((item) => {
-        return (
-          <CartItem
-            setCart={setCart}
-            key={item.id}
-            id={item.id}
-            amount={item.quantity}
-          />
-        );
-      })}
+      <div className="cart-item-container">
+        {[...cart].map((item) => {
+          return (
+            <CartItem
+              setCart={setCart}
+              key={item.id}
+              id={item.id}
+              amount={item.quantity}
+            />
+          );
+        })}
+      </div>
       <CartTotal cart={cart} />
       <Checkout />
     </div>
@@ -180,7 +182,7 @@ function getTotal(currentCart) {
     // if cart is empty return 0
     return total;
   }
-  for (let item of cart) {
+  for (let item of cart.cart) {
     let id = item.id;
     let selected = plantList.filter((plant) => plant.id === parseInt(id))[0];
     total += selected.price * item.quantity;

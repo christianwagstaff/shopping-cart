@@ -1,5 +1,15 @@
 .cart {
     padding: var(--gap);
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.cart-item-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    flex-grow: 1;
 }
 
 .cart-item {
@@ -65,4 +75,8 @@
 
 .checkout:active {
     background-color: var(--terciary-color);
+}
+
+@media screen and (min-width:600px) {
+    
 }
