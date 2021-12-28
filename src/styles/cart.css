@@ -78,5 +78,14 @@
 }
 
 @media screen and (min-width:600px) {
-    
+    .cart {
+        width: 80%;
+        align-self: center;
+    }
+    .cart-item {
+        height: 200px;
+    }
+    .image-container.cart-image-container {
+        width: 200px;
+    }
 }
