@@ -113,7 +113,7 @@ const CartItem = (props) => {
 };
 
 const CartTotal = (cart) => {
-  const total = getTotal();
+  const total = getTotal(cart);
   return (
     <div className="checkout-pricing">
       <div className="horizontal subtotal">
@@ -173,9 +173,13 @@ function useLocalStorage(key, initialValue) {
   return [storedValue, setValue];
 }
 
-function getTotal() {
-  const cart = JSON.parse(localStorage.getItem("cart"));
+function getTotal(currentCart) {
+  const cart = currentCart;
   let total = 0;
+  if (cart.cart.length === 0) {
+    // if cart is empty return 0
+    return total;
+  }
   for (let item of cart) {
     let id = item.id;
     let selected = plantList.filter((plant) => plant.id === parseInt(id))[0];
