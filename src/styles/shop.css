@@ -37,6 +37,7 @@
     flex-wrap: 1;
     gap: var(--gap);
     padding: var(--gap);
+    overflow-x: auto;
 }
 
 .item-container::-webkit-scrollbar {
