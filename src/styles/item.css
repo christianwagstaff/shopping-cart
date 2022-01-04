@@ -34,12 +34,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     padding: var(--gap);
 }
 
-.item-details .shop-item-price {
-    align-self: flex-start;
+.center {
+    align-self: center;
 }
 
 .purchase {
@@ -56,7 +56,9 @@
 }
 
 .quantity {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--secondary-color);

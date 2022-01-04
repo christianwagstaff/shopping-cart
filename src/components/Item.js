@@ -70,13 +70,17 @@ function Item() {
         </Link>
       </div>
       <div className="item-details">
-        <h1>{data.name}</h1>
+        <h1 className="center">{data.name}</h1>
         <p>{data.description}</p>
         <div className="shop-item-price">
           <div>Price: </div>
           <div className="price-amount">{data.price}</div>
         </div>
-        <div className="purchase">
+        <div className="shop-item-price">
+          <div>Available in Stock: </div>
+          <div>{data.stock}</div>
+        </div>
+        <div className="purchase center">
           <div className="price-amount">{data.price * amount}</div>
           <div className="quantity">
             <button className="decreaseAmount" onClick={decreaseAmount}>

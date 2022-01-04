@@ -8,9 +8,11 @@
     gap: var(--gap);
     overflow: hidden;
     font-family: "Rubik", sans-serif;
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
 }
 
-.shop h1 {
+h1 {
     font-size: x-large;
 }
 
