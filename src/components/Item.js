@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useQuery } from "react-query";
+
 import "../styles/item.css";
-import plantList from "./plantList";
+import fetchPlant from "../api/fetchPlantById";
 import { ReactComponent as BackArrow } from "../images/back-arrow.svg";
 import { ReactComponent as Checkmark } from "../images/check.svg";
 
@@ -9,7 +11,17 @@ function Item() {
   const [amount, setAmount] = useState(0);
   const [showConfirm, setShowConfirm] = useState(false);
   const { id } = useParams();
-  const selected = plantList.filter((plant) => plant.id === parseInt(id))[0];
+  const { isLoading, isError, data, error } = useQuery(
+    "plantItem",
+    () => fetchPlant(id)
+  );
+  if (isLoading) {
+    return <div className="loading">Loading Plants</div>;
+  }
+  if (isError) {
+    return <div className="error">Error: {error.message}</div>;
+  }
+  // We can assume the data is successful
 
   function increaseAmount() {
     setAmount(amount + 1);
@@ -51,20 +63,21 @@ function Item() {
     <div className="item">
       <div className="top">
         <div className="image-container">
-          <img src={selected.img} alt={selected.name} />
+          {/* <img src={data.img} alt={data.name} /> */}
         </div>
         <Link to="/shop" className="back">
           {<BackArrow />}
         </Link>
       </div>
       <div className="item-details">
-        <h1>{selected.name}</h1>
+        <h1>{data.name}</h1>
+        <p>{data.description}</p>
         <div className="shop-item-price">
           <div>Price: </div>
-          <div className="price-amount">{selected.price}</div>
+          <div className="price-amount">{data.price}</div>
         </div>
         <div className="purchase">
-          <div className="price-amount">{selected.price * amount}</div>
+          <div className="price-amount">{data.price * amount}</div>
           <div className="quantity">
             <button className="decreaseAmount" onClick={decreaseAmount}>
               -

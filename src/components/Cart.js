@@ -195,7 +195,6 @@ function useLocalStorage(key, initialValue) {
 }
 
 function getTotal(props) {
-  console.log(props);
   const cart = props.cart;
   const plantList = props.plantList;
   let total = 0;

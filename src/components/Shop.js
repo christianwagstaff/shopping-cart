@@ -1,38 +1,28 @@
-import plantList from "./plantList";
 import "../styles/shop.css";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
-
-// const plantList = fetch("http://localhost:3000/api/plants/all").then((res) =>
-//   res.json()
-// );
-
-// Shuffle The Lists on Load
-// const succulentList = shuffleArray(
-//   plantList.filter((plant) => plant.tags.includes("succulent"))
-// );
-// const flowering = shuffleArray(
-//   plantList.filter((plant) => plant.tags.includes("flowering"))
-// );
-
-// const expensive = shuffleArray(
-//   plantList.filter((plant) => plant.tags.includes("expensive"))
-// );
-
-// const allPlants = shuffleArray(plantList);
+import fetchPlantList from "../api/fetchPlantList";
+import { useEffect } from "react";
 
 const Shop = () => {
-  const { isLoading, isError, data, error } = useQuery(
+  const { isLoading, isError, data, error, remove } = useQuery(
     "plantList",
-    fetchPlantList
+    fetchPlantList,
+    {
+      staleTime: 60 * 1000 ,// 1 minute
+      cacheTime: 60 * 1000 * 10 // 10 minutes
+    }
   );
+  useEffect(() => {
+    // When this component unmounts, call it
+    return () => remove();
+  }, [remove]);
   if (isLoading) {
     return <div className="loading">Loading Plants</div>;
   }
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return <div className="error">Error: {error.message}</div>;
   }
-  console.log(data);
   // We can assume at this point data is successful
   const succulentList = shuffleArray(
     data.filter((plant) => plant.category.some((e) => e.name === "succulent"))
@@ -107,10 +97,4 @@ function shuffleArray(arr) {
     [copy[i], copy[j]] = [copy[j], copy[i]];
   }
   return copy;
-}
-
-async function fetchPlantList() {
-  let results = await fetch("http://localhost:3000/api/plants/all");
-  let json = await results.json();
-  return json;
 }
