@@ -1,0 +1,18 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--secondary-color);
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--gap);
+}
+
+.footer-info {
+    align-items: center;
+    color: white;
+}
+
+.footer-info img {
+    height: 2rem;
+}

@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import Shop from "./components/Shop";
 import Item from "./components/Item";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/shop/:id" element={<Item />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
