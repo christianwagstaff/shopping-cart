@@ -9,8 +9,8 @@ const Shop = () => {
     "plantList",
     fetchPlantList,
     {
-      staleTime: 60 * 1000 ,// 1 minute
-      cacheTime: 60 * 1000 * 10 // 10 minutes
+      staleTime: 60 * 1000, // 1 minute
+      cacheTime: 60 * 1000 * 10, // 10 minutes
     }
   );
   useEffect(() => {
@@ -38,13 +38,13 @@ const Shop = () => {
   const allPlants = shuffleArray(data);
 
   return (
-    <div className="shop">
+    <main className="shop">
       <h1>Shop</h1>
       <ShopSection title="Popular" list={expensive} />
       <ShopSection title="Succulents" list={succulentList} />
       <ShopSection title="Flowering Plants" list={flowering} />
       <ShopSection title="See All" list={allPlants} />
-    </div>
+    </main>
   );
 };
 

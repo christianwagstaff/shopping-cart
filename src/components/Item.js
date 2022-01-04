@@ -60,7 +60,7 @@ function Item() {
   }
 
   return (
-    <div className="item">
+    <main className="item">
       <div className="top">
         <div className="image-container">
           {/* <img src={data.img} alt={data.name} /> */}
@@ -93,7 +93,7 @@ function Item() {
         </div>
       </div>
       {showConfirm ? <AddedToCartPopup /> : null}
-    </div>
+    </main>
   );
 }
 

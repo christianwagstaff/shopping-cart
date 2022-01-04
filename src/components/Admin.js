@@ -1,7 +1,7 @@
-const Admin = () => {
- return (
-     <div>Hello</div>
- )
-}
+import "../styles/admin.css";
 
-export default Admin
+const Admin = () => {
+  return <main>Hello</main>;
+};
+
+export default Admin;

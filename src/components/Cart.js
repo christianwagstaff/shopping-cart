@@ -23,7 +23,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart shop">
+    <main className="cart shop">
       <h1>Cart</h1>
       <div className="cart-item-container">
         {[...cart].map((item) => {
@@ -40,7 +40,7 @@ const Cart = () => {
       </div>
       <CartTotal cart={cart} plantList={data} />
       <Checkout plantList={data} />
-    </div>
+    </main>
   );
 };
 
