@@ -1,26 +1,52 @@
 import plantList from "./plantList";
 import "../styles/shop.css";
 import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
 
 // const plantList = fetch("http://localhost:3000/api/plants/all").then((res) =>
 //   res.json()
 // );
 
 // Shuffle The Lists on Load
-const succulentList = shuffleArray(
-  plantList.filter((plant) => plant.tags.includes("succulent"))
-);
-const flowering = shuffleArray(
-  plantList.filter((plant) => plant.tags.includes("flowering"))
-);
+// const succulentList = shuffleArray(
+//   plantList.filter((plant) => plant.tags.includes("succulent"))
+// );
+// const flowering = shuffleArray(
+//   plantList.filter((plant) => plant.tags.includes("flowering"))
+// );
 
-const expensive = shuffleArray(
-  plantList.filter((plant) => plant.tags.includes("expensive"))
-);
+// const expensive = shuffleArray(
+//   plantList.filter((plant) => plant.tags.includes("expensive"))
+// );
 
-const allPlants = shuffleArray(plantList);
+// const allPlants = shuffleArray(plantList);
 
 const Shop = () => {
+  const { isLoading, isError, data, error } = useQuery(
+    "plantList",
+    fetchPlantList
+  );
+  if (isLoading) {
+    return <div className="loading">Loading Plants</div>;
+  }
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+  console.log(data);
+  // We can assume at this point data is successful
+  const succulentList = shuffleArray(
+    data.filter((plant) => plant.category.some((e) => e.name === "succulent"))
+  );
+  const flowering = shuffleArray(
+    data.filter((plant) => plant.category.some((e) => e.name === "flowering"))
+  );
+
+  const expensive = shuffleArray(
+    data.filter((plant) => plant.category.some((e) => e.name === "expensive"))
+  );
+
+  const allPlants = shuffleArray(data);
+
   return (
     <div className="shop">
       <h1>Shop</h1>
@@ -35,17 +61,16 @@ const Shop = () => {
 const ShopSection = (props) => {
   return (
     <div className="shop-section">
-      {console.log(props.list)}
       <h2>{props.title}</h2>
       <div className="item-container">
         {props.list.map((item) => {
           return (
             <ShopItem
-              key={item.id}
+              key={item._id}
               name={item.name}
-              img={item.img}
+              // img={item.img}
               price={item.price}
-              id={item.id}
+              id={item._id}
             />
           );
         })}
@@ -82,4 +107,10 @@ function shuffleArray(arr) {
     [copy[i], copy[j]] = [copy[j], copy[i]];
   }
   return copy;
+}
+
+async function fetchPlantList() {
+  let results = await fetch("http://localhost:3000/api/plants/all");
+  let json = await results.json();
+  return json;
 }
