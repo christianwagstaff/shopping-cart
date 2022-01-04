@@ -7,6 +7,7 @@ import Shop from "./components/Shop";
 import Item from "./components/Item";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
+import Admin from "./components/Admin"
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:id" element={<Item />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/admin" element={<Admin />} />
+
         </Routes>
         <Footer />
       </Router>

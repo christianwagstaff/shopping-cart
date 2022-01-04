@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/footer.css";
 
 const Footer = () => {
   return (
     <footer>
-      <NavLink to="/admin">Admin</NavLink>
+      <Link to="/admin">Admin</Link>
       <div className="horizontal footer-info">
         <p>Made By Christian Wagstaff</p>
         <a href="https://github.com/christianwagstaff">
