@@ -2,6 +2,10 @@ import plantList from "./plantList";
 import "../styles/shop.css";
 import { Link } from "react-router-dom";
 
+// const plantList = fetch("http://localhost:3000/api/plants/all").then((res) =>
+//   res.json()
+// );
+
 // Shuffle The Lists on Load
 const succulentList = shuffleArray(
   plantList.filter((plant) => plant.tags.includes("succulent"))
@@ -9,6 +13,7 @@ const succulentList = shuffleArray(
 const flowering = shuffleArray(
   plantList.filter((plant) => plant.tags.includes("flowering"))
 );
+
 const expensive = shuffleArray(
   plantList.filter((plant) => plant.tags.includes("expensive"))
 );
@@ -30,6 +35,7 @@ const Shop = () => {
 const ShopSection = (props) => {
   return (
     <div className="shop-section">
+      {console.log(props.list)}
       <h2>{props.title}</h2>
       <div className="item-container">
         {props.list.map((item) => {
