@@ -1,3 +1,18 @@
-h1 {
-    
+.admin {
+    display: flex;
+    flex-direction: column;
+    padding: var(--gap);
+    gap: var(--gap);
+}
+
+.left {
+    justify-content: flex-start;
+}
+
+.btn {
+    color: black;
+    padding: var(--gap);
+    border: 2px solid var(--primary-color);
+    width: fit-content;
+    border-radius: var(--gap);
 }
