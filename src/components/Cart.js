@@ -1,10 +1,27 @@
 import { ReactComponent as Close } from "../images/close.svg";
-import plantList from "./plantList";
 import "../styles/cart.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import fetchPlantList from "../api/fetchPlantList";
+import { useQuery } from "react-query";
 
 const Cart = () => {
   const [cart, setCart] = useLocalStorage("cart", []);
+  // const [cart, setCart] = useState([])
+  const { isLoading, isError, data, error, remove } = useQuery(
+    "plantList",
+    fetchPlantList
+  );
+  useEffect(() => {
+    // When this component unmounts, call it
+    return () => remove();
+  }, [remove]);
+  if (isLoading) {
+    return <div className="loading">Loading Plants</div>;
+  }
+  if (isError) {
+    return <div className="error">Error: {error.message}</div>;
+  }
+
   return (
     <div className="cart shop">
       <h1>Cart</h1>
@@ -16,12 +33,13 @@ const Cart = () => {
               key={item.id}
               id={item.id}
               amount={item.quantity}
+              plantList={data}
             />
           );
         })}
       </div>
-      <CartTotal cart={cart} />
-      <Checkout />
+      <CartTotal cart={cart} plantList={data} />
+      <Checkout plantList={data} />
     </div>
   );
 };
@@ -30,8 +48,9 @@ export default Cart;
 
 const CartItem = (props) => {
   const setCart = props.setCart;
+  const plantList = props.plantList;
   const selected = plantList.filter(
-    (plant) => plant.id === parseInt(props.id)
+    (plant) => plant._id === props.id
   )[0];
   function increaseAmount(id) {
     let newAmount = props.amount + 1;
@@ -76,7 +95,7 @@ const CartItem = (props) => {
   return (
     <div className="cart-item">
       <div className="image-container cart-image-container">
-        <img src={selected.img} alt={selected.name} />
+        {/* <img src={selected.img} alt={selected.name} /> */}
       </div>
       <div className="cart-details">
         <div className="item-info">
@@ -114,8 +133,8 @@ const CartItem = (props) => {
   );
 };
 
-const CartTotal = (cart) => {
-  const total = getTotal(cart);
+function CartTotal(props) {
+  const total = getTotal(props);
   return (
     <div className="checkout-pricing">
       <div className="horizontal subtotal">
@@ -132,7 +151,7 @@ const CartTotal = (cart) => {
       </div>
     </div>
   );
-};
+}
 
 function replaceAt(array, index, value) {
   const ret = array.slice(0);
@@ -175,16 +194,20 @@ function useLocalStorage(key, initialValue) {
   return [storedValue, setValue];
 }
 
-function getTotal(currentCart) {
-  const cart = currentCart;
+function getTotal(props) {
+  console.log(props);
+  const cart = props.cart;
+  const plantList = props.plantList;
   let total = 0;
-  if (cart.cart.length === 0) {
+  if (cart.length === 0) {
     // if cart is empty return 0
     return total;
   }
-  for (let item of cart.cart) {
+  for (let item of cart) {
     let id = item.id;
-    let selected = plantList.filter((plant) => plant.id === parseInt(id))[0];
+    let selected = plantList.filter((plant) => {
+      return plant._id === id;
+    })[0];
     total += selected.price * item.quantity;
   }
   return total;
