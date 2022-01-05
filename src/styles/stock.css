@@ -1,0 +1,38 @@
+.stock-container {
+    padding: var(--gap);
+    display: flex;
+    flex-direction: column;
+    gap:var(--gap);
+    align-items: center;
+}
+
+.stock-list {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--terciary-color);
+    padding: var(--gap);
+    max-width: 700px;
+    border-radius: var(--gap);
+}
+
+.stock-list-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--gap);
+    padding-top: var(--gap);
+    align-items: center;
+    padding-bottom: var(--gap);
+}
+
+.stock-list-item:nth-of-type(even){
+    background-color: var(--complementary-color);
+}
+
+.title {
+    font-size: large;
+    border-top: none;
+}
+
+.add-new-plant {
+    margin-top: var(--gap);
+}

@@ -1,5 +1,5 @@
 const NewPlantForm = () => {
-  return <div>Hello!</div>;
+  return <main className="padded">Hello!</main>;
 };
 
 export default NewPlantForm;

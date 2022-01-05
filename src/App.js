@@ -9,6 +9,8 @@ import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import Admin from "./components/Admin";
 import NewPlantForm from "./components/forms/NewPlant";
+import NewCategoryForm from "./components/forms/NewCategory";
+import Stock from "./components/Stock";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/newplant" element={<NewPlantForm />} />
+          <Route path="/admin/newcategory" element={<NewCategoryForm />} />
+          <Route path="/admin/stock" element={<Stock />} />
         </Routes>
         <Footer />
       </Router>

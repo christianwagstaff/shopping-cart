@@ -1,7 +1,6 @@
 .admin {
     display: flex;
     flex-direction: column;
-    padding: var(--gap);
     gap: var(--gap);
 }
 
@@ -10,9 +9,15 @@
 }
 
 .btn {
-    color: black;
+    color: white;
     padding: var(--gap);
     border: 2px solid var(--primary-color);
     width: fit-content;
     border-radius: var(--gap);
+    background-color: var(--terciary-color);
+}
+
+.btn:active {
+    color: white;
+    background-color: var(--secondary-color);
 }

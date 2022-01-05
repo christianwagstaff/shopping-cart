@@ -1,20 +1,16 @@
 import { ReactComponent as Close } from "../images/close.svg";
 import "../styles/cart.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import fetchPlantList from "../api/fetchPlantList";
 import { useQuery } from "react-query";
 
 const Cart = () => {
   const [cart, setCart] = useLocalStorage("cart", []);
   // const [cart, setCart] = useState([])
-  const { isLoading, isError, data, error, remove } = useQuery(
+  const { isLoading, isError, data, error } = useQuery(
     "plantList",
     fetchPlantList
   );
-  useEffect(() => {
-    // When this component unmounts, call it
-    return () => remove();
-  }, [remove]);
   if (isLoading) {
     return <div className="loading">Loading Plants</div>;
   }
@@ -23,7 +19,7 @@ const Cart = () => {
   }
 
   return (
-    <main className="cart shop">
+    <main className="cart shop padded">
       <h1>Cart</h1>
       <div className="cart-item-container">
         {[...cart].map((item) => {
@@ -49,9 +45,10 @@ export default Cart;
 const CartItem = (props) => {
   const setCart = props.setCart;
   const plantList = props.plantList;
-  const selected = plantList.filter(
-    (plant) => plant._id === props.id
-  )[0];
+  const selected = plantList.filter((plant) => plant._id === props.id)[0];
+  if (!selected) {
+    return null;
+  }
   function increaseAmount(id) {
     let newAmount = props.amount + 1;
     updateCart(id, newAmount);
@@ -207,6 +204,10 @@ function getTotal(props) {
     let selected = plantList.filter((plant) => {
       return plant._id === id;
     })[0];
+    if (!selected) {
+      // if the selected item is not on the list, set its price to 0
+      selected = { price: 0 };
+    }
     total += selected.price * item.quantity;
   }
   return total;

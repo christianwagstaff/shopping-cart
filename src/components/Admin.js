@@ -16,16 +16,19 @@ const Admin = () => {
   }
   // Response is good so Continue
   return (
-    <main className="admin">
+    <main className="admin padded">
       <h1>Planty Admin</h1>
       <p>
         Here you can control what plants are available to sell, their quantities
       </p>
       <StoreInfo data={data} />
-      <Link to='/admin/newplant' className="btn">
+      <Link to="/admin/stock" className="btn">
+        View Current Stock
+      </Link>
+      <Link to="/admin/newplant" className="btn">
         Create New Plant
       </Link>
-      <Link to='/admin/newcategory' className="btn">
+      <Link to="/admin/newcategory" className="btn">
         Create New Category
       </Link>
     </main>
