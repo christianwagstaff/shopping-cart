@@ -5,7 +5,7 @@ export default function StockList(props) {
   const [stockList, setStockList] = useState(sortList(props.stockList, 'name', 'asc') || []);
   const [priceOrder, setPriceOrder] = useState("none");
   const [stockOrder, setStockOrder] = useState("none");
-  const [titleOrder, setTitleOrder] = useState("none");
+  const [titleOrder, setTitleOrder] = useState("desc");
   return (
     <div className="stock-list">
       <StockTitle
