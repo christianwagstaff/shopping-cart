@@ -1,5 +1,6 @@
 import "../../styles/form.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function PlantForm(props) {
   const categories = props.categories || [];
@@ -29,6 +30,18 @@ export default function PlantForm(props) {
     };
     props.onSubmit(newPlant);
     event.preventDefault();
+    setName("");
+    setDescription("");
+    setPrice("");
+    setStock("");
+    setCheckedState(new Array(categories.length).fill(false));
+  }
+  function handleSubmitBack(e) {
+    if (!name || !description || !price || !stock) {
+      return;
+    }
+    handleSubmit(e);
+    props.submitBack();
   }
   return (
     <form method="POST" action={props.action} onSubmit={handleSubmit}>
@@ -101,7 +114,15 @@ export default function PlantForm(props) {
             onChange={(e) => setStock(e.target.value)}
           />
         </div>
-        <input type="submit" className="btn submit" />
+        <div className="btn-list">
+          <btn className="cancel btn">Cancel</btn>
+          <div className="btn-list-submit">
+            <button onClick={handleSubmitBack} className="btn submit">
+              Submit and Back
+            </button>
+            <input type="submit" className="btn submit" />
+          </div>
+        </div>
       </fieldset>
     </form>
   );

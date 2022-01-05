@@ -4,6 +4,7 @@ import PlantForm from "./plantForm";
 import "../../styles/newPlant.css";
 import { useState } from "react";
 import CheckmarkPopup from "../popups/checkmarkPopup";
+import { useNavigate } from "react-router-dom";
 
 const NewPlantForm = () => {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -11,13 +12,9 @@ const NewPlantForm = () => {
     "category_list",
     fetchCategory
   );
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div className="error">Error: {error.message}</div>;
-  }
-  function submitNewPlant(data) {
+  // Submit new plant to API
+  const navigate = useNavigate();
+  function submitNewPlant(data, redirect) {
     fetch("http://localhost:3000/api/plants/new", {
       method: "GET",
       headers: {
@@ -26,17 +23,37 @@ const NewPlantForm = () => {
       },
       body: JSON.stringify(data),
     }).then(
+      // Show confirmation checkmark UI
       setShowConfirm(true),
       setTimeout(() => {
         setShowConfirm(false);
+        // Redirect user back if redirect is passed
+        if (redirect) {
+          navigate(-1);
+        }
       }, 1000)
     );
+  }
+  // Submit new plant and redirect to Admin Page
+  function submitNewPlantAndBack(data) {
+    submitNewPlant(data, true);
+  }
+  // Check to see if Data is loaded
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div className="error">Error: {error.message}</div>;
   }
   // Response is good so Continue
   return (
     <main className="padded new-plant">
       <h1>Create a New Plant</h1>
-      <PlantForm categories={data} onSubmit={submitNewPlant} />
+      <PlantForm
+        categories={data}
+        onSubmit={submitNewPlant}
+        submitBack={submitNewPlantAndBack}
+      />
       {showConfirm ? <CheckmarkPopup /> : null}
     </main>
   );
