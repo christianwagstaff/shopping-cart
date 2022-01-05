@@ -3,38 +3,38 @@ import "../styles/cart.css";
 import { useState } from "react";
 import fetchPlantList from "../api/fetchPlantList";
 import { useQuery } from "react-query";
+import Loading from "./popups/loading";
 
 const Cart = () => {
   const [cart, setCart] = useLocalStorage("cart", []);
   // const [cart, setCart] = useState([])
-  const { isLoading, isError, data, error } = useQuery(
-    "plantList",
-    fetchPlantList
-  );
-  if (isLoading) {
-    return <div className="loading">Loading Plants</div>;
-  }
-  if (isError) {
-    return <div className="error">Error: {error.message}</div>;
-  }
-
+  const { isLoading, isError, data } = useQuery("plantList", fetchPlantList, {
+    staleTime: 1000,
+  });
   return (
     <main className="cart shop padded">
       <h1>Cart</h1>
       <div className="cart-item-container">
-        {[...cart].map((item) => {
-          return (
-            <CartItem
-              setCart={setCart}
-              key={item.id}
-              id={item.id}
-              amount={item.quantity}
-              plantList={data}
-            />
-          );
-        })}
+        {isLoading && <Loading />}
+        {!isLoading &&
+          !isError &&
+          [...cart].map((item) => {
+            return (
+              <CartItem
+                setCart={setCart}
+                key={item.id}
+                id={item.id}
+                amount={item.quantity}
+                plantList={data}
+              />
+            );
+          })}
       </div>
-      <CartTotal cart={cart} plantList={data} />
+      {isLoading || isError ? (
+        <CartTotal loading={true} />
+      ) : (
+        <CartTotal cart={cart} plantList={data} />
+      )}
       <Checkout plantList={data} />
     </main>
   );
@@ -131,7 +131,12 @@ const CartItem = (props) => {
 };
 
 function CartTotal(props) {
-  const total = getTotal(props);
+  let total;
+  if (props.loading) {
+    total = 0;
+  } else {
+    total = getTotal(props);
+  }
   return (
     <div className="checkout-pricing">
       <div className="horizontal subtotal">

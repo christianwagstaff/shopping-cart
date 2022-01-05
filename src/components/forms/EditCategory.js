@@ -1,23 +1,26 @@
-import fetchCategory from "../../api/fetchCategories";
+import fetchCategory from "../../api/fetchCategoryById";
 import { useQuery } from "react-query";
 import CategoryForm from "./categoryForm";
 import "../../styles/newPlant.css";
 import { useState } from "react";
 import CheckmarkPopup from "../popups/checkmarkPopup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Loading from "../popups/loading";
 
-const NewCategoryForm = () => {
+const EditCategory = () => {
+  const location = useLocation();
+  const { id } = location.state;
   const [showConfirm, setShowConfirm] = useState(false);
   const { isLoading, isError, data, error } = useQuery(
     "category_list",
-    fetchCategory
+    () => fetchCategory(id),
+    { cacheTime: 0 }
   );
   // Submit new plant to API
   const navigate = useNavigate();
-  function submitNewCategory(data, redirect) {
-    fetch("http://localhost:3000/api/plants/categories/new", {
-      method: "POST",
+  function submitEditCategory(data, redirect) {
+    fetch("http://localhost:3000/api/plants/categories/edit", {
+      method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -35,9 +38,9 @@ const NewCategoryForm = () => {
       }, 1000)
     );
   }
-  // Submit new plant and redirect to Admin Page
-  function submitNewCategoryAndBack(data) {
-    submitNewCategory(data, true);
+  // Submit new plant and redirect to Back
+  function sumbitEditCategoryAndBack(data) {
+    submitEditCategory(data, true);
   }
   // Check to see if Data is loaded
   if (isLoading) {
@@ -53,15 +56,15 @@ const NewCategoryForm = () => {
   // Response is good so Continue
   return (
     <main className="padded new-plant">
-      <h1>Create a New Category</h1>
+      <h1>Edit Category</h1>
       <CategoryForm
-        categories={data}
-        onSubmit={submitNewCategory}
-        submitBack={submitNewCategoryAndBack}
+        category={data}
+        onSubmit={submitEditCategory}
+        submitBack={sumbitEditCategoryAndBack}
       />
       {showConfirm ? <CheckmarkPopup /> : null}
     </main>
   );
 };
 
-export default NewCategoryForm;
+export default EditCategory;

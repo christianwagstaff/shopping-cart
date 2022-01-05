@@ -2,6 +2,7 @@ import "../styles/admin.css";
 import { useQuery } from "react-query";
 import fetchPlantyInfo from "../api/fetchPlantyInfo";
 import { Link } from "react-router-dom";
+import Loading from "../components/popups/loading"
 
 const Admin = () => {
   const { isLoading, isError, data, error } = useQuery(
@@ -9,7 +10,7 @@ const Admin = () => {
     fetchPlantyInfo
   );
   if (isLoading) {
-    return <main>Loading...</main>;
+    return <main><Loading/></main>;
   }
   if (isError) {
     return <main className="error">Error: {error.message}</ main>;

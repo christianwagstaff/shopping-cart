@@ -23,6 +23,7 @@ export default function CategoryList(props) {
           <StockItem
             name={category.name_formatted}
             key={category._id}
+            id={category._id}
           />
         );
       })}
@@ -33,8 +34,15 @@ export default function CategoryList(props) {
 
 const StockItem = (params) => {
   return (
-    <div className="stock-list-item">
+    <div className="stock-list-item single">
       <h4>{params.name}</h4>
+      <Link
+        to="/admin/categories/edit"
+        className="edit"
+        state={{ id: params.id }}
+      >
+        <i className="far fa-edit edit" />
+      </Link>
     </div>
   );
 };

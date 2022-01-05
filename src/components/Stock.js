@@ -2,6 +2,7 @@ import "../styles/stock.css";
 import fetchPlantList from "../api/fetchPlantList";
 import { useQuery } from "react-query";
 import StockList from "./StockList";
+import Loading from "../components/popups/loading";
 
 const Stock = () => {
   const { isLoading, isError, data, error } = useQuery(
@@ -9,7 +10,11 @@ const Stock = () => {
     fetchPlantList
   );
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
   }
   if (isError) {
     return <div className="error">Error: {error.message}</div>;
@@ -18,7 +23,7 @@ const Stock = () => {
   return (
     <main className="stock-container">
       <h1>Stock List</h1>
-      <StockList stockList={data}/>
+      <StockList stockList={data} />
     </main>
   );
 };

@@ -4,13 +4,20 @@ import { useNavigate } from "react-router-dom";
 
 export default function CategoryForm(props) {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState(props.category == null ? "" : props.category.name);
+  const [description, setDescription] = useState(
+    props.category == null ? "" : props.category.description
+  );
   function handleSubmit(event) {
-    const newCategory = {
+    let newCategory = {
       name: name,
       description: description,
     };
+    if (props.category) {
+      console.log("inside")
+      // Necessary for updating a category, otherwise a new ID will be issued
+      newCategory._id = props.category._id;
+    }
     props.onSubmit(newCategory);
     event.preventDefault();
     setName("");
@@ -49,9 +56,9 @@ export default function CategoryForm(props) {
           />
         </div>
         <div className="btn-list">
-          <btn className="cancel btn" onClick={() => navigate(-1)}>
+          <button className="cancel btn" onClick={() => navigate(-1)}>
             Cancel
-          </btn>
+          </button>
           <div className="btn-list-submit">
             <button onClick={handleSubmitBack} className="btn submit">
               Submit and Back

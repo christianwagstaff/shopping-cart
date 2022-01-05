@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import fetchCategories from "../api/fetchCategories";
-import CategoryList from "../components/CategoryList"
+import CategoryList from "../components/CategoryList";
+import Loading from "./popups/loading";
 
 export default function Categories() {
   const { isLoading, isError, data, error } = useQuery(
@@ -8,7 +9,11 @@ export default function Categories() {
     fetchCategories
   );
   if (isLoading) {
-    return <main>Loading...</main>;
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
   }
   if (isError) {
     return <main className="error">Error: {error.message}</main>;

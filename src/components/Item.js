@@ -6,6 +6,7 @@ import "../styles/item.css";
 import fetchPlant from "../api/fetchPlantById";
 import { ReactComponent as BackArrow } from "../images/back-arrow.svg";
 import CheckmarkPopup from "./popups/checkmarkPopup";
+import Loading from "./popups/loading";
 
 function Item() {
   const [amount, setAmount] = useState(0);
@@ -17,7 +18,7 @@ function Item() {
     {cacheTime: 0}
   );
   if (isLoading) {
-    return <div className="loading">Loading Plants</div>;
+    return <main><Loading/></main>;
   }
   if (isError) {
     return <div className="error">Error: {error.message}</div>;

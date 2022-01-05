@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import fetchPlantList from "../api/fetchPlantList";
 import { useEffect } from "react";
+import Loading from "./popups/loading";
 
 const Shop = () => {
   const { isLoading, isError, data, error, remove } = useQuery(
@@ -18,7 +19,11 @@ const Shop = () => {
     return () => remove();
   }, [remove]);
   if (isLoading) {
-    return <div className="loading">Loading Plants</div>;
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
   }
   if (isError) {
     return <div className="error">Error: {error.message}</div>;

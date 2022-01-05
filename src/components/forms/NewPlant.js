@@ -5,6 +5,7 @@ import "../../styles/newPlant.css";
 import { useState } from "react";
 import CheckmarkPopup from "../popups/checkmarkPopup";
 import { useNavigate } from "react-router-dom";
+import Loading from "../popups/loading";
 
 const NewPlantForm = () => {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -40,7 +41,11 @@ const NewPlantForm = () => {
   }
   // Check to see if Data is loaded
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
   }
   if (isError) {
     return <div className="error">Error: {error.message}</div>;
