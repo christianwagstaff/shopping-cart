@@ -1,7 +1,7 @@
 form {
     background-color: var(--complementary-color);
     padding: var(--gap);
-    width: 80%;
+    width: min(80%, 700px);
     border: 1px solid var(--primary-color);
     border-radius: var(--gap);
 }
@@ -28,4 +28,33 @@ fieldset {
 
 .submit {
     align-self: flex-end;
+}
+
+.btn-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    margin-top: var(--gap);
+}
+
+.cancel {
+    background-color: rgb(199, 58, 58);
+}
+
+.btn-list-submit {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.btn-list .btn {
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+    .btn-list {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
 }
