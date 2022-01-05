@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function PlantForm(props) {
+  const navigate = useNavigate();
   const categories = props.categories || [];
-
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -115,7 +115,9 @@ export default function PlantForm(props) {
           />
         </div>
         <div className="btn-list">
-          <btn className="cancel btn">Cancel</btn>
+          <btn className="cancel btn" onClick={() => navigate(-1)}>
+            Cancel
+          </btn>
           <div className="btn-list-submit">
             <button onClick={handleSubmitBack} className="btn submit">
               Submit and Back
