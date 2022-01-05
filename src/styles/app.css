@@ -24,3 +24,8 @@ main {
 .padded {
     padding: var(--gap);
 }
+
+input, textarea {
+    font-family: "Rubik", sans-serif;
+    font-size: inherit;
+}
