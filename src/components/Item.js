@@ -13,7 +13,8 @@ function Item() {
   const { id } = useParams();
   const { isLoading, isError, data, error } = useQuery(
     "plantItem",
-    () => fetchPlant(id)
+    () => fetchPlant(id),
+    {cacheTime: 0}
   );
   if (isLoading) {
     return <div className="loading">Loading Plants</div>;
