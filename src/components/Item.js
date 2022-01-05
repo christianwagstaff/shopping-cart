@@ -5,7 +5,7 @@ import { useQuery } from "react-query";
 import "../styles/item.css";
 import fetchPlant from "../api/fetchPlantById";
 import { ReactComponent as BackArrow } from "../images/back-arrow.svg";
-import { ReactComponent as Checkmark } from "../images/check.svg";
+import CheckmarkPopup from "./popups/checkmarkPopup";
 
 function Item() {
   const [amount, setAmount] = useState(0);
@@ -97,7 +97,7 @@ function Item() {
           </button>
         </div>
       </div>
-      {showConfirm ? <AddedToCartPopup /> : null}
+      {showConfirm ? <CheckmarkPopup /> : null}
     </main>
   );
 }
@@ -109,13 +109,3 @@ function replaceAt(array, index, value) {
   ret[index] = value;
   return ret;
 }
-
-const AddedToCartPopup = () => {
-  return (
-    <div className="popup-wrapper">
-      <div className="popup">
-        <Checkmark className="confirm" />
-      </div>
-    </div>
-  );
-};
