@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function StockList(props) {
-  const [stockList, setStockList] = useState(props.stockList || []);
+  const [stockList, setStockList] = useState(sortList(props.stockList, 'name', 'asc') || []);
   const [priceOrder, setPriceOrder] = useState("none");
   const [stockOrder, setStockOrder] = useState("none");
-  const [titleOrder, setTitleOrder] = useState("asc");
+  const [titleOrder, setTitleOrder] = useState("none");
   return (
     <div className="stock-list">
       <StockTitle
