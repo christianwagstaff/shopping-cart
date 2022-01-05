@@ -18,9 +18,20 @@ const NewPlantForm = () => {
   return (
     <main className="padded new-plant">
       <h1>Create a New Plant</h1>
-      <PlantForm categories={data} action='http://localhost:3000/plants/new' />
+      <PlantForm categories={data} onSubmit={submitNewPlant} />
     </main>
   );
 };
 
 export default NewPlantForm;
+
+function submitNewPlant(data) {
+  fetch("http://localhost:3000/api/plants/new", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}

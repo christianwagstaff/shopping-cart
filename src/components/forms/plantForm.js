@@ -1,8 +1,8 @@
 import "../../styles/form.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function PlantForm(props) {
-  const categories = props.categories;
+  const categories = props.categories || [];
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -16,6 +16,19 @@ export default function PlantForm(props) {
       index === position ? !item : item
     );
     setCheckedState(updatedCheckedState);
+  }
+  function handleSubmit(event) {
+    const newPlant = {
+      name: name,
+      description: description,
+      price: price,
+      stock: stock,
+      category: categories
+        .filter((e, index) => checkedState[index])
+        .map((e) => e._id),
+    };
+    props.onSubmit(newPlant);
+    event.preventDefault();
   }
   return (
     <form method="POST" action={props.action} onSubmit={handleSubmit}>
@@ -92,11 +105,6 @@ export default function PlantForm(props) {
       </fieldset>
     </form>
   );
-}
-
-function handleSubmit(event) {
-  event.preventDefault();
-  console.log("Submitted");
 }
 
 function upperCaseFirstOnly(string) {
