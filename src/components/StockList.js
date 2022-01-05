@@ -9,7 +9,7 @@ export default function StockList(props) {
   return (
     <div className="stock-list">
       <StockTitle
-        name="Plant Name"
+        name="Name"
         stock="Stock"
         price="Price"
         priceOrder={priceOrder}
@@ -17,15 +17,21 @@ export default function StockList(props) {
         titleOrder={titleOrder}
         sortTitle={() => {
           setStockList(sortList(stockList, "name", titleOrder));
-          setTitleOrder(titleOrder === "asc" ? "des" : "asc");
+          setTitleOrder(titleOrder === "asc" ? "desc" : "asc");
+          setStockOrder("none");
+          setPriceOrder("none");
         }}
         sortPrice={() => {
           setStockList(sortList(stockList, "price", priceOrder));
-          setPriceOrder(priceOrder === "asc" ? "des" : "asc");
+          setPriceOrder(priceOrder === "asc" ? "desc" : "asc");
+          setStockOrder("none");
+          setTitleOrder("none");
         }}
         sortStock={() => {
           setStockList(sortList(stockList, "stock", stockOrder));
-          setStockOrder(stockOrder === "asc" ? "des" : "asc");
+          setStockOrder(stockOrder === "asc" ? "desc" : "asc");
+          setTitleOrder("none");
+          setPriceOrder("none");
         }}
       />
       {stockList.map((plant) => {
@@ -55,14 +61,18 @@ const StockItem = (params) => {
 const StockTitle = (params) => {
   return (
     <div className="stock-list-item title">
-      <div onClick={params.sortTitle} className={params.titleOrder}>
-        {params.name}
+      <div onClick={params.sortTitle} className="horizontal left">
+        <h3>{params.name}</h3>
+        <i className={faSortIcons(params.titleOrder)}></i>
       </div>
-      <div onClick={params.sortPrice} className={params.priceOrder}>
-        {params.price}
+      <div onClick={params.sortPrice} className="horizontal left">
+        <h3>{params.price}</h3>
+        <i className={faSortIcons(params.priceOrder)}></i>
       </div>
-      <div onClick={params.sortStock} className={params.stockOrder}>
-        {params.stock}
+      <div onClick={params.sortStock} className="horizontal left">
+        {" "}
+        <h3>{params.stock}</h3>
+        <i className={faSortIcons(params.stockOrder)}></i>
       </div>
     </div>
   );
@@ -88,4 +98,12 @@ function sortList(list, param, order) {
     return list;
   }
   return newList;
+}
+
+function faSortIcons(order) {
+  if (order === "desc") {
+    return "fas fa-angle-up";
+  } else if (order === "asc") {
+    return "fas fa-angle-down";
+  }
 }
