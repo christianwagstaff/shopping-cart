@@ -25,14 +25,16 @@
 @keyframes zoom {
     0% {
         opacity: 0;
-        scale: 1;
+        transform: scale(1);
     }
     50% {
         opacity: 1;
-        scale: 3;
+        transform: scale(3);
+
     }
     100% {
         opacity: 0;
-        scale: 1;
+        transform: scale(1);
+
     }
 }
