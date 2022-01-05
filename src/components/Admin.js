@@ -9,10 +9,10 @@ const Admin = () => {
     fetchPlantyInfo
   );
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <main>Loading...</main>;
   }
   if (isError) {
-    return <div className="error">Error: {error.message}</div>;
+    return <main className="error">Error: {error.message}</ main>;
   }
   // Response is good so Continue
   return (
