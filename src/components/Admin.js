@@ -31,6 +31,12 @@ const Admin = () => {
       <Link to="/admin/newcategory" className="btn">
         Create New Category
       </Link>
+      <Link to="/admin/plants" className="btn">
+        View Plants
+      </Link>
+      <Link to="/admin/categories" className="btn">
+        View Categories
+      </Link>
     </main>
   );
 };

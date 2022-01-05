@@ -11,6 +11,8 @@ import Admin from "./components/Admin";
 import NewPlantForm from "./components/forms/NewPlant";
 import NewCategoryForm from "./components/forms/NewCategory";
 import Stock from "./components/Stock";
+import Plants from "./components/Plants";
+import Categories from "./components/Categories";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/admin/newplant" element={<NewPlantForm />} />
           <Route path="/admin/newcategory" element={<NewCategoryForm />} />
           <Route path="/admin/stock" element={<Stock />} />
+          <Route path="/admin/plants" element={<Plants />} />
+          <Route path="/admin/categories" element={<Categories />} />
         </Routes>
         <Footer />
       </Router>
