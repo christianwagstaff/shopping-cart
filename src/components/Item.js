@@ -24,8 +24,12 @@ function Item() {
     return <div className="error">Error: {error.message}</div>;
   }
   // We can assume the data is successful
+  const stock = data.stock
 
   function increaseAmount() {
+    if (amount + 1 > stock) {
+      return;
+    }
     setAmount(amount + 1);
   }
   function decreaseAmount() {

@@ -50,13 +50,16 @@ const CartItem = (props) => {
     return null;
   }
   function increaseAmount(id) {
+    if (props.amount === selected.stock) {
+      return;
+    }
     let newAmount = props.amount + 1;
     updateCart(id, newAmount);
   }
   function decreaseAmount(id) {
     let newAmount = props.amount - 1;
     if (newAmount === 0) {
-      deleteItem(id);
+        deleteItem(id);
       return;
     }
     updateCart(id, newAmount);
