@@ -19,6 +19,7 @@ html, body {
 main {
     flex-grow: 1;
     font-family: "Rubik", sans-serif;
+    position: relative;
 }
 
 .padded {

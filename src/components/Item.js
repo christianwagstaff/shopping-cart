@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-
+ 
 import "../styles/item.css";
 import fetchPlant from "../api/fetchPlantById";
 import { ReactComponent as BackArrow } from "../images/back-arrow.svg";

@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.back.padded {
+    margin-top: var(--gap);
+    margin-left: var(--gap);
+}
+
 .stock-list {
     display: flex;
     flex-direction: column;
