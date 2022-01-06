@@ -58,9 +58,18 @@ const StockItem = (params) => {
       <h4>{params.name}</h4>
       <div>{params.price}</div>
       <div>{params.stock}</div>
-      <Link to="/admin/plants/edit" className="edit" state={{ id: params.id }}>
-        <i className="far fa-edit edit" />
-      </Link>
+      <div className="button-list">
+        <button onClick={() => console.log("Delete")}>
+          <i className="fas fa-trash edit" />
+        </button>
+        <Link
+          to="/admin/plants/edit"
+          className="edit"
+          state={{ id: params.id }}
+        >
+          <i className="far fa-edit edit" />
+        </Link>
+      </div>
     </div>
   );
 };

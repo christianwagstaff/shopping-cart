@@ -29,13 +29,13 @@ export default function PlantForm(props) {
     );
     setCheckedState(updatedCheckedState);
   }
-  function clearData() {
-    setName("");
-    setDescription("");
-    setPrice("");
-    setStock("");
-    setCheckedState(new Array(categories.length).fill(false));
-  }
+  // function clearData() {
+  //   setName("");
+  //   setDescription("");
+  //   setPrice("");
+  //   setStock("");
+  //   setCheckedState(new Array(categories.length).fill(false));
+  // }
   function createNewPlant() {
     const newPlant = {
       name: name,
@@ -63,10 +63,9 @@ export default function PlantForm(props) {
     const newPlant = createNewPlant();
     e.preventDefault();
     props.submitBack(newPlant);
-    clearData();
   }
   return (
-    <form method="POST" action={props.action} onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <fieldset>
         <div className="form-input">
           <label htmlFor="name">Name: </label>
