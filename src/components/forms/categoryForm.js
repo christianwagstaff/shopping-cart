@@ -8,7 +8,7 @@ export default function CategoryForm(props) {
   const [description, setDescription] = useState(
     props.category == null ? "" : props.category.description
   );
-  function handleSubmit(event) {
+  function createNewCategory() {
     let newCategory = {
       name: name,
       description: description,
@@ -17,17 +17,22 @@ export default function CategoryForm(props) {
       // Necessary for updating a category, otherwise a new ID will be issued
       newCategory._id = props.category._id;
     }
-    props.onSubmit(newCategory);
-    event.preventDefault();
     setName("");
     setDescription("");
+    return newCategory;
+  }
+  function handleSubmit(event) {
+    let newCategory = createNewCategory();
+    props.onSubmit(newCategory);
+    event.preventDefault();
   }
   function handleSubmitBack(e) {
     if (!name || !description) {
       return;
     }
-    handleSubmit(e);
-    props.submitBack();
+    let newCategory = createNewCategory();
+    e.preventDefault();
+    props.submitBack(newCategory);
   }
   return (
     <form onSubmit={handleSubmit}>
