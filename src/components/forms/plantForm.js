@@ -18,7 +18,7 @@ export default function PlantForm(props) {
     );
     setCheckedState(updatedCheckedState);
   }
-  function handleSubmit(event) {
+  function createNewPlant() {
     const newPlant = {
       name: name,
       description: description,
@@ -28,20 +28,25 @@ export default function PlantForm(props) {
         .filter((e, index) => checkedState[index])
         .map((e) => e._id),
     };
-    props.onSubmit(newPlant);
-    event.preventDefault();
     setName("");
     setDescription("");
     setPrice("");
     setStock("");
     setCheckedState(new Array(categories.length).fill(false));
+    return newPlant;
+  }
+  function handleSubmit(event) {
+    const newPlant = createNewPlant();
+    props.onSubmit(newPlant);
+    event.preventDefault();
   }
   function handleSubmitBack(e) {
     if (!name || !description || !price || !stock) {
       return;
     }
-    handleSubmit(e);
-    props.submitBack();
+    const newPlant = createNewPlant();
+    e.preventDefault();
+    props.submitBack(newPlant);
   }
   return (
     <form method="POST" action={props.action} onSubmit={handleSubmit}>
