@@ -17,9 +17,11 @@ export default function CategoryForm(props) {
       // Necessary for updating a category, otherwise a new ID will be issued
       newCategory._id = props.category._id;
     }
+    return newCategory;
+  }
+  function clearData() {
     setName("");
     setDescription("");
-    return newCategory;
   }
   function handleSubmit(event) {
     let newCategory = createNewCategory();
