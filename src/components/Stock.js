@@ -22,7 +22,7 @@ const Stock = () => {
   // Response is good so Continue
   return (
     <main className="stock-container">
-      <h1>Stock List</h1>
+      <h1>Plant List</h1>
       <StockList stockList={data} />
     </main>
   );

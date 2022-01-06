@@ -19,10 +19,10 @@ export default function CategoryForm(props) {
     }
     return newCategory;
   }
-  function clearData() {
-    setName("");
-    setDescription("");
-  }
+  // function clearData() {
+  //   setName("");
+  //   setDescription("");
+  // }
   function handleSubmit(event) {
     let newCategory = createNewCategory();
     props.onSubmit(newCategory);

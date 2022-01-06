@@ -24,7 +24,7 @@ const Admin = () => {
       </p>
       <StoreInfo data={data} />
       <Link to="/admin/stock" className="btn">
-        View Current Stock
+        View Plants
       </Link>
       <Link to="/admin/newplant" className="btn">
         Create New Plant
@@ -32,9 +32,9 @@ const Admin = () => {
       <Link to="/admin/newcategory" className="btn">
         Create New Category
       </Link>
-      <Link to="/admin/plants" className="btn">
+      {/* <Link to="/admin/plants" className="btn">
         View Plants
-      </Link>
+      </Link> */}
       <Link to="/admin/categories" className="btn">
         View Categories
       </Link>

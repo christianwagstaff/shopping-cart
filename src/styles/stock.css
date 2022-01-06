@@ -17,7 +17,7 @@
 
 .stock-list-item {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr .4fr;
     gap: var(--gap);
     padding-top: var(--gap);
     align-items: center;
@@ -58,7 +58,7 @@
     .edit {
         display: none;
     }
-    .stock-list-item.single:hover .edit {
+    .stock-list-item:hover .edit {
         display: flex;
     }
 }

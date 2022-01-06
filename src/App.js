@@ -14,6 +14,7 @@ import Stock from "./components/Stock";
 import Plants from "./components/Plants";
 import Categories from "./components/Categories";
 import EditCategory from "./components/forms/EditCategory";
+import EditPlant from "./components/forms/EditPlant";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/admin/plants" element={<Plants />} />
           <Route path="/admin/categories" element={<Categories />} />
           <Route path="/admin/categories/edit" element={<EditCategory />} />
+          <Route path="/admin/plants/edit" element={<EditPlant />} />
         </Routes>
         <Footer />
       </Router>

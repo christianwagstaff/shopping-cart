@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
- 
+
 export default function StockList(props) {
-  const [stockList, setStockList] = useState(sortList(props.stockList, 'name', 'asc') || []);
+  const [stockList, setStockList] = useState(
+    sortList(props.stockList, "name", "asc") || []
+  );
   const [priceOrder, setPriceOrder] = useState("none");
   const [stockOrder, setStockOrder] = useState("none");
   const [titleOrder, setTitleOrder] = useState("desc");
@@ -41,6 +43,7 @@ export default function StockList(props) {
             stock={plant.stock}
             price={plant.price}
             key={plant._id}
+            id={plant._id}
           />
         );
       })}
@@ -55,6 +58,9 @@ const StockItem = (params) => {
       <h4>{params.name}</h4>
       <div>{params.price}</div>
       <div>{params.stock}</div>
+      <Link to="/admin/plants/edit" className="edit" state={{ id: params.id }}>
+        <i className="far fa-edit edit" />
+      </Link>
     </div>
   );
 };

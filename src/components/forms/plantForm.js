@@ -5,13 +5,24 @@ import { useNavigate } from "react-router-dom";
 export default function PlantForm(props) {
   const navigate = useNavigate();
   const categories = props.categories || [];
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [stock, setStock] = useState("");
-  const [checkedState, setCheckedState] = useState(
-    new Array(categories.length).fill(false)
+  const [name, setName] = useState(props.plant ? props.plant.name : "");
+  const [description, setDescription] = useState(
+    props.plant ? props.plant.description : ""
   );
+  const [price, setPrice] = useState(props.plant ? props.plant.price : "");
+  const [stock, setStock] = useState(props.plant ? props.plant.stock : "");
+  const arr = new Array(categories.length).fill(false);
+  if (props.plant) {
+    categories.map((cat, index) => {
+      if (checkIfCategoryIsActive(props.plant.category, cat)) {
+        arr[index] = !arr[index];
+      }
+    });
+  }
+  const [checkedState, setCheckedState] = useState(arr);
+  function checkIfCategoryIsActive(arr, val) {
+    return arr.some((arrVal) => val._id === arrVal._id);
+  }
   function handleCheckedChange(position) {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
@@ -35,6 +46,9 @@ export default function PlantForm(props) {
         .filter((e, index) => checkedState[index])
         .map((e) => e._id),
     };
+    if (props.plant) {
+      newPlant._id = props.plant._id;
+    }
     return newPlant;
   }
   function handleSubmit(event) {
