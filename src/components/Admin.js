@@ -2,7 +2,7 @@ import "../styles/admin.css";
 import { useQuery } from "react-query";
 import fetchPlantyInfo from "../api/fetchPlantyInfo";
 import { Link } from "react-router-dom";
-import Loading from "../components/popups/loading"
+import Loading from "../components/popups/loading";
 
 const Admin = () => {
   const { isLoading, isError, data, error } = useQuery(
@@ -10,10 +10,14 @@ const Admin = () => {
     fetchPlantyInfo
   );
   if (isLoading) {
-    return <main><Loading/></main>;
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
   }
   if (isError) {
-    return <main className="error">Error: {error.message}</ main>;
+    return <main className="error">Error: {error.message}</main>;
   }
   // Response is good so Continue
   return (
@@ -28,15 +32,12 @@ const Admin = () => {
       </Link>
       <Link to="/admin/newplant" className="btn">
         Create New Plant
+      </Link>{" "}
+      <Link to="/admin/categories" className="btn">
+        View Categories
       </Link>
       <Link to="/admin/newcategory" className="btn">
         Create New Category
-      </Link>
-      {/* <Link to="/admin/plants" className="btn">
-        View Plants
-      </Link> */}
-      <Link to="/admin/categories" className="btn">
-        View Categories
       </Link>
     </main>
   );
