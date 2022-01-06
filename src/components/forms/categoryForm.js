@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CategoryForm(props) {
   const navigate = useNavigate();
-  const [name, setName] = useState(props.category == null ? "" : props.category.name);
+  const [name, setName] = useState(props.category ? props.category.name : "");
   const [description, setDescription] = useState(
     props.category == null ? "" : props.category.description
   );
@@ -14,7 +14,6 @@ export default function CategoryForm(props) {
       description: description,
     };
     if (props.category) {
-      console.log("inside")
       // Necessary for updating a category, otherwise a new ID will be issued
       newCategory._id = props.category._id;
     }
@@ -31,7 +30,7 @@ export default function CategoryForm(props) {
     props.submitBack();
   }
   return (
-    <form method="POST" action={props.action} onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <fieldset>
         <div className="form-input">
           <label htmlFor="name">Name: </label>

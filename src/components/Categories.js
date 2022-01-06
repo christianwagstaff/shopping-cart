@@ -6,7 +6,10 @@ import Loading from "./popups/loading";
 export default function Categories() {
   const { isLoading, isError, data, error } = useQuery(
     "category_list",
-    fetchCategories
+    fetchCategories,
+    {
+      cacheTime: 0,
+    }
   );
   if (isLoading) {
     return (
@@ -22,7 +25,7 @@ export default function Categories() {
   return (
     <main className="padded stock-container">
       <h1>Categories</h1>
-      <CategoryList data={data}/>
+      <CategoryList data={data} />
     </main>
   );
 }

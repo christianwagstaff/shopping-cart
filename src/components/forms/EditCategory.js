@@ -12,13 +12,17 @@ const EditCategory = () => {
   const { id } = location.state;
   const [showConfirm, setShowConfirm] = useState(false);
   const { isLoading, isError, data, error } = useQuery(
-    "category_list",
+    "category_item",
     () => fetchCategory(id),
-    { cacheTime: 0 }
+    {
+      cacheTime: 0,
+    }
   );
-  // Submit new plant to API
   const navigate = useNavigate();
+
+  // Submit new plant to API
   function submitEditCategory(data, redirect) {
+    console.log(data)
     fetch("http://localhost:3000/api/plants/categories/edit", {
       method: "PUT",
       headers: {

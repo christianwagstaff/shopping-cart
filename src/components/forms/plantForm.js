@@ -115,9 +115,9 @@ export default function PlantForm(props) {
           />
         </div>
         <div className="btn-list">
-          <btn className="cancel btn" onClick={() => navigate(-1)}>
+          <button className="cancel btn" onClick={() => navigate(-1)}>
             Cancel
-          </btn>
+          </button>
           <div className="btn-list-submit">
             <button onClick={handleSubmitBack} className="btn submit">
               Submit and Back
