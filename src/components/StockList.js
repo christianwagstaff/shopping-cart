@@ -44,6 +44,7 @@ export default function StockList(props) {
             price={plant.price}
             key={plant._id}
             id={plant._id}
+            onDelete={props.delete}
           />
         );
       })}
@@ -59,7 +60,7 @@ const StockItem = (params) => {
       <div>{params.price}</div>
       <div>{params.stock}</div>
       <div className="button-list">
-        <button onClick={() => console.log("Delete" + params.id)}>
+        <button onClick={() => params.onDelete(params.id)}>
           <i className="fas fa-trash edit" />
         </button>
         <Link

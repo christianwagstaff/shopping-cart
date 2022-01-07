@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient, notifyManager } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import fetchCategories from "../api/fetchCategories";
 import CategoryList from "../components/CategoryList";
 import Loading from "./popups/loading";
@@ -11,7 +11,10 @@ export default function Categories() {
   const queryClient = useQueryClient();
   const { isLoading, isFetching, isError, data, error } = useQuery(
     "category_list",
-    fetchCategories
+    fetchCategories, 
+    {
+      refetchOnWindowFocus: false
+    }
   );
   const deleteCategoryMutation = useMutation(deleteCategory, {
     // Optimistically update the cache value an mutate, but store the old value and return it so its accessible on error
@@ -36,7 +39,7 @@ export default function Categories() {
     },
     // After success or failure, refresh the todo query
     onSuccess: () => {
-      console.log("success")
+      console.log("success");
       queryClient.invalidateQueries("category_list");
     },
   });
