@@ -22,7 +22,6 @@ const EditCategory = () => {
 
   // Submit new plant to API
   function submitEditCategory(data, redirect) {
-    console.log(data)
     fetch("http://localhost:3000/api/plants/categories/edit", {
       method: "PUT",
       headers: {

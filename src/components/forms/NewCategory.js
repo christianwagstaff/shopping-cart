@@ -1,5 +1,5 @@
 import fetchCategory from "../../api/fetchCategories";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import CategoryForm from "./categoryForm";
 import "../../styles/newPlant.css";
 import { useState } from "react";
@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../popups/loading";
 
 const NewCategoryForm = () => {
+  const queryClient = useQueryClient();
   const [showConfirm, setShowConfirm] = useState(false);
-  const { isLoading, isError, data, error } = useQuery(
+  const { isLoading, isFetching, isError, data, error } = useQuery(
     "category_list",
     fetchCategory
   );
@@ -31,6 +32,7 @@ const NewCategoryForm = () => {
         // Redirect user back if redirect is passed
         if (redirect) {
           navigate(-1);
+          queryClient.invalidateQueries("category_list")
         }
       }, 1000)
     );
@@ -40,7 +42,7 @@ const NewCategoryForm = () => {
     submitNewCategory(data, true);
   }
   // Check to see if Data is loaded
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return (
       <main>
         <Loading />

@@ -59,7 +59,7 @@ const StockItem = (params) => {
       <div>{params.price}</div>
       <div>{params.stock}</div>
       <div className="button-list">
-        <button onClick={() => console.log("Delete")}>
+        <button onClick={() => console.log("Delete" + params.id)}>
           <i className="fas fa-trash edit" />
         </button>
         <Link

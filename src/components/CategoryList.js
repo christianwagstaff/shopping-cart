@@ -6,6 +6,7 @@ export default function CategoryList(props) {
     sortList(props.data, "name_formatted", "asc") || []
   );
   const [titleOrder, setTitleOrder] = useState("desc");
+  // Handle Delete Cateogry Mutation
   return (
     <div className="stock-list">
       <StockTitle
@@ -24,6 +25,7 @@ export default function CategoryList(props) {
             name={category.name_formatted}
             key={category._id}
             id={category._id}
+            onDelete={props.delete}
           />
         );
       })}
@@ -36,13 +38,18 @@ const StockItem = (params) => {
   return (
     <div className="stock-list-item single">
       <h4>{params.name}</h4>
-      <Link
-        to="/admin/categories/edit"
-        className="edit"
-        state={{ id: params.id }}
-      >
-        <i className="far fa-edit edit" />
-      </Link>
+      <div className="button-list">
+        <button onClick={() => params.onDelete(params.id)}>
+          <i className="fas fa-trash edit" />
+        </button>
+        <Link
+          to="/admin/categories/edit"
+          className="edit"
+          state={{ id: params.id }}
+        >
+          <i className="far fa-edit edit" />
+        </Link>{" "}
+      </div>
     </div>
   );
 };
@@ -56,6 +63,7 @@ const StockTitle = (params) => {
     </div>
   );
 };
+
 const NewCategory = () => {
   return (
     <Link to="/admin/newCategory" className="add-new-plant btn">

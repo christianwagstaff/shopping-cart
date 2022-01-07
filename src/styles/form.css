@@ -41,6 +41,11 @@ fieldset {
     background-color: rgb(199, 58, 58);
 }
 
+.cancel:disabled {
+    background-color: rgb(122, 35, 35);
+    cursor: not-allowed;
+}
+
 .btn-list-submit {
     display: flex;
     flex-direction: column;

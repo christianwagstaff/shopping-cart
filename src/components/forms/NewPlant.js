@@ -11,7 +11,7 @@ const NewPlantForm = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { isLoading, isError, data, error } = useQuery(
     "category_list",
-    fetchCategory
+    fetchCategory 
   );
   // Submit new plant to API
   const navigate = useNavigate();
