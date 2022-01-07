@@ -4,6 +4,7 @@ import { useState } from "react";
 import fetchPlantList from "../api/fetchPlantList";
 import { useQuery } from "react-query";
 import Loading from "./popups/loading";
+import PlantImg from "../images/plants/flowers.png"
 
 const Cart = () => {
   const [cart, setCart] = useLocalStorage("cart", []);
@@ -95,7 +96,7 @@ const CartItem = (props) => {
   return (
     <div className="cart-item">
       <div className="image-container cart-image-container">
-        {/* <img src={selected.img} alt={selected.name} /> */}
+        <img src={selected.img || PlantImg} alt={selected.name} />
       </div>
       <div className="cart-details">
         <div className="item-info">

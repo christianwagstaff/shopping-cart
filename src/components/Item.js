@@ -7,6 +7,7 @@ import fetchPlant from "../api/fetchPlantById";
 import { ReactComponent as BackArrow } from "../images/back-arrow.svg";
 import CheckmarkPopup from "./popups/checkmarkPopup";
 import Loading from "./popups/loading";
+import PlantImg from "../images/plants/flowers.png"
 
 function Item() {
   const [amount, setAmount] = useState(0);
@@ -69,7 +70,7 @@ function Item() {
     <main className="item">
       <div className="top">
         <div className="image-container">
-          {/* <img src={data.img} alt={data.name} /> */}
+          <img src={data.img || PlantImg} alt={data.name} />
         </div>
         <Link to="/shop" className="back">
           {<BackArrow />}

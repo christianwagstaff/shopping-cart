@@ -38,7 +38,7 @@ const Shop = () => {
   );
 
   const expensive = shuffleArray(
-    data.filter((plant) => plant.category.some((e) => e.name === "expensive"))
+    data.filter((plant) => plant.category.some((e) => e.name === "rare"))
   );
 
   const allPlants = shuffleArray(data);

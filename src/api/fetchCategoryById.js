@@ -1,5 +1,5 @@
 async function fetchPlant(id) {
-    let results = await fetch(`http://localhost:3000/api/plants/categories/${id}`);
+    let results = await fetch(`https://still-lowlands-16466.herokuapp.com/api/plants/categories/${id}`);
     let json = await results.json();
     return json;
   }

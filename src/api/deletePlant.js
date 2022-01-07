@@ -1,5 +1,5 @@
 const deletePlant = async function (id) {
-    return await fetch("http://localhost:3000/api/plants/delete", {
+    return await fetch("https://still-lowlands-16466.herokuapp.com/api/plants/delete", {
       method: "DELETE",
       headers: {
         Accept: "application/json",

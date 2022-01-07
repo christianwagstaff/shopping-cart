@@ -36,6 +36,7 @@
     justify-content: space-around;
     align-items: flex-start;
     padding: var(--gap);
+    gap: var(--gap);
 }
 
 .center {
