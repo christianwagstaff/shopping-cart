@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import fetchPlantList from "../api/fetchPlantList";
 import { useEffect } from "react";
 import Loading from "./popups/loading";
+import PlantIcon from "../images/plants/flowers.png"
 
 const Shop = () => {
   const { isLoading, isError, data, error, remove } = useQuery(
@@ -79,7 +80,7 @@ const ShopItem = (props) => {
     <Link to={`/shop/${props.id}`} className="shop-link">
       <div className="shop-item">
         <div className="shop-item-img">
-          <img src={props.img} alt={props.name} />
+          <img src={props.img || PlantIcon} alt={props.name}/>
         </div>
         <h3>{props.name}</h3>
         <div className="shop-item-price">
